@@ -8,7 +8,7 @@
 .idea/**/usage.statistics.xml
 .idea/**/dictionaries
 .idea/**/shelf
-
+.idea
 # AWS User-specific
 .idea/**/aws.xml
 
@@ -156,3 +156,11 @@ buildNumber.properties
 # JDT-specific (Eclipse Java Development Tools)
 .classpath
 .settings/
+
+### Various
+
+*.DS_Store
+Thumbs.db
+output/
+*.bin
+*.o
