@@ -1,0 +1,184 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>me.anthonyw</groupId>
+	<artifactId>byteaccelerator</artifactId>
+	<packaging>jar</packaging>
+	<version>0.1.0</version>
+	<name>byteaccelerator</name>
+	<description>A darkenergy compiler.</description>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<maven.compiler.source>11</maven.compiler.source>
+		<maven.compiler.target>11</maven.compiler.target>
+
+		<imageName>${project.artifactId}</imageName>
+		<native.maven.plugin.version>0.9.7</native.maven.plugin.version>
+	</properties>
+
+	<profiles>
+		<!-- native-image profile -->
+		<profile>
+			<id>native</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<version>3.0.0-M5</version>
+					</plugin>
+					<plugin>
+						<groupId>org.graalvm.buildtools</groupId>
+						<artifactId>native-maven-plugin</artifactId>
+						<version>${native.maven.plugin.version}</version>
+						<extensions>true</extensions>
+						<executions>
+							<execution>
+								<id>test-native</id>
+								<goals>
+									<goal>generateTestResourceConfig</goal>
+									<goal>test</goal>
+								</goals>
+								<phase>test</phase>
+							</execution>
+							<execution>
+								<id>build-native</id>
+								<goals>
+									<goal>generateResourceConfig</goal>
+									<goal>build</goal>
+								</goals>
+								<phase>package</phase>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
+	<dependencies>
+		<!-- GraalVM / SVM -->
+		<dependency>
+			<groupId>com.oracle.substratevm</groupId>
+			<artifactId>svm</artifactId>
+			<version>19.2.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>info.picocli</groupId>
+			<artifactId>picocli-codegen</artifactId>
+			<version>4.7.4</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<!-- Library Dependencies -->
+		<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.10.1</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>32.1.2-jre</version>
+		</dependency>
+
+		<!-- Console -->
+		<!-- https://mvnrepository.com/artifact/org.fusesource.jansi/jansi -->
+		<dependency>
+			<groupId>org.fusesource.jansi</groupId>
+			<artifactId>jansi</artifactId>
+			<version>2.4.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/info.picocli/picocli -->
+		<dependency>
+			<groupId>info.picocli</groupId>
+			<artifactId>picocli</artifactId>
+			<version>4.7.4</version>
+			<optional>true</optional>
+		</dependency>
+
+		<!-- Logging -->
+		<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>2.0.7</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-jdk14 -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-jdk14</artifactId>
+			<version>2.0.7</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.slf4j/log4j-over-slf4j -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>log4j-over-slf4j</artifactId>
+			<version>2.0.7</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<version>2.20.0</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<finalName>${project.artifactId}</finalName>
+		<resources>
+			<resource>
+				<filtering>true</filtering>
+				<directory>src/main/resources</directory>
+				<excludes>
+					<exclude>**/*.java</exclude>
+				</excludes>
+			</resource>
+		</resources>
+		<extensions>
+			<extension>
+				<groupId>kr.motd.maven</groupId>
+				<artifactId>os-maven-plugin</artifactId>
+				<version>1.7.1</version>
+			</extension>
+		</extensions>
+
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.1</version>
+				<configuration>
+					<annotationProcessorPaths>
+						<path>
+							<groupId>info.picocli</groupId>
+							<artifactId>picocli-codegen</artifactId>
+							<version>4.7.4</version>
+						</path>
+					</annotationProcessorPaths>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>3.3.0</version>
+			</plugin>
+
+		</plugins>
+	</build>
+
+	<repositories>
+		<repository>
+			<id>jitpack.io</id>
+			<url>https://www.jitpack.io</url>
+		</repository>
+	</repositories>
+
+</project>

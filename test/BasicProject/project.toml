@@ -1,0 +1,27 @@
+[project]
+name = "BasicProject"
+version = "0.1.0"
+description = ""
+authors = [
+    "Alice",
+    "Bob"
+]
+package = "bin"
+
+
+
+[compiler]
+minimum_version = "0.1.0"
+
+
+
+[dependencies]
+
+[dependencies.package-manager]
+colored = "1.0.0"
+
+[dependencies.git]
+
+[dependencies.local]
+b = 0
+c = []

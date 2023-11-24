@@ -1,0 +1,7 @@
+resources/
+bin/
+src/
+*.json
+*.sh
+*.md
+LICENSE

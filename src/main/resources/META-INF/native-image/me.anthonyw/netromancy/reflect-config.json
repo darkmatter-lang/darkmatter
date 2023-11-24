@@ -1,0 +1,49 @@
+[
+  {
+    "name":"java.lang.Thread",
+    "methods":[{"name":"getContextClassLoader","parameterTypes":[] }]
+  },
+  {
+    "name":"org.eclipse.swt.widgets.Display",
+    "methods":[{"name":"fixedClassInitProc","parameterTypes":[] }]
+  },
+  {
+    "name":"org.eclipse.swt.graphics.Device",
+    "methods":[{"name":"getPrimaryScreen","parameterTypes":[] }]
+  },
+  {
+    "name":"org.eclipse.swt.graphics.GC",
+    "fields":[{"name":"handle"}]
+  },
+  {
+    "name":"org.eclipse.swt.internal.cocoa.NSScreen",
+    "methods":[{"name":"backingScaleFactor","parameterTypes":[] }]
+  },
+  {
+    "name":"org.eclipse.swt.internal.cocoa.id",
+    "fields":[{"name":"id"}]
+  },
+  {
+    "name":"org.eclipse.swt.internal.image.GIFFileFormat",
+    "methods":[{"name":"<init>","parameterTypes":[] }]
+  },
+  {
+    "name":"org.eclipse.swt.internal.image.JPEGFileFormat",
+    "methods":[{"name":"<init>","parameterTypes":[] }]
+  },
+  {
+    "name":"org.eclipse.swt.internal.image.PNGFileFormat",
+    "methods":[{"name":"<init>","parameterTypes":[] }]
+  },
+  {
+    "name":"org.eclipse.swt.internal.image.WinBMPFileFormat",
+    "methods":[{"name":"<init>","parameterTypes":[] }]
+  },
+  {
+    "name":"org.eclipse.swt.internal.image.WinICOFileFormat",
+    "methods":[{"name":"<init>","parameterTypes":[] }]
+  },
+  {
+    "name":"org.eclipse.swt.widgets.Display"
+  }
+]

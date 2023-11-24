@@ -1,0 +1,15 @@
+# IDE specifics
+.settings/
+.project
+.vscode/
+
+# Binary rubbish
+bin/
+target/
+*.DS_Store
+Thumbs.db
+config/
+output/
+*.bin
+*.log
+*.o

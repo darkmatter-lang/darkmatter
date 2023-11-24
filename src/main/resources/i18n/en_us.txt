@@ -1,0 +1,26 @@
+# en_us - English - United States
+
+text.in_file=In file '%s'
+text.on_line=on line %s
+text.on_lines=on lines %s to %s
+
+# Prefix of what to print before the informational, warning, or error message shows:
+# source_code.dm:7:10:
+text.source_msg_prefix=%s:%s%s:
+
+statement.terminator.missing=Expected a '%s' at the end of the statement.
+
+
+
+scope.open.missing=Expected a scope opening symbol: '%s'.
+scope.close.missing=Expected a scope closing symbol: '%s'.
+
+variable.reassignment.useless=Variable %s is being unnecessarily re-assigned %s times.
+variable.reassignment.immutable=Variable %s cannot be re-assigned a value because it is immutable!
+
+
+variable.name.reserved=The variable name '%s' is a reserved keyword, rename it.
+variable.name.convention=Variable %s is not following convention, it should be written in camel-case.
+
+
+

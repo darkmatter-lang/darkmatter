@@ -1,0 +1,131 @@
+[
+  {
+    "name":"java.lang.ClassLoader",
+    "methods":[
+      {"name":"getPlatformClassLoader","parameterTypes":[] },
+      {"name":"loadClass","parameterTypes":["java.lang.String"] }
+    ]
+  },
+  {
+    "name":"java.lang.Throwable",
+    "allDeclaredFields":true,
+    "allDeclaredMethods":true
+  },
+  {
+    "name":"java.util.ArrayList",
+    "methods":[
+      {"name":"<init>","parameterTypes":[] },
+      {"name":"add","parameterTypes":["java.lang.Object"] }
+    ]
+  },
+  {
+    "name":"java.util.HashMap",
+    "methods":[
+      {"name":"<init>","parameterTypes":[] },
+      {"name":"put","parameterTypes":["java.lang.Object","java.lang.Object"] }
+    ]
+  },
+  {
+    "name":"org.eclipse.swt.browser.WebKit",
+    "allDeclaredFields":true,
+    "allDeclaredMethods":true
+  },
+  {
+    "name":"org.eclipse.swt.internal.cocoa.CGPoint",
+    "fields":[
+      {"name":"x"},
+      {"name":"y"}
+    ]
+  },
+  {
+    "name":"org.eclipse.swt.internal.cocoa.CGRect",
+    "fields":[
+      {"name":"origin"},
+      {"name":"size"}
+    ]
+  },
+  {
+    "name":"org.eclipse.swt.internal.cocoa.CGSize",
+    "fields":[
+      {"name":"height"},
+      {"name":"width"}
+    ]
+  },
+  {
+    "name":"org.eclipse.swt.internal.cocoa.NSOperatingSystemVersion",
+    "fields":[
+      {"name":"majorVersion"},
+      {"name":"minorVersion"},
+      {"name":"patchVersion"}
+    ]
+  },
+  {
+    "name":"org.eclipse.swt.internal.cocoa.NSPoint",
+    "fields":[
+      {"name":"x"},
+      {"name":"y"}
+    ]
+  },
+  {
+    "name":"org.eclipse.swt.internal.cocoa.NSRange",
+    "fields":[
+      {"name":"length"},
+      {"name":"location"}
+    ]
+  },
+  {
+    "name":"org.eclipse.swt.internal.cocoa.NSRect",
+    "fields":[
+      {"name":"height"},
+      {"name":"width"},
+      {"name":"x"},
+      {"name":"y"}
+    ]
+  },
+  {
+    "name":"org.eclipse.swt.internal.cocoa.NSSize",
+    "fields":[
+      {"name":"height"},
+      {"name":"width"}
+    ]
+  },
+  {
+    "name": "org.eclipse.swt.internal.cocoa.objc_super",
+    "fields": [
+      {"name": "receiver"},
+      {"name": "super_class"}
+    ]
+  },
+  {
+    "name": "org.eclipse.swt.internal.cocoa.OS",
+    "fields": [
+      {"name": "sel_identity"}
+    ]
+  },
+  {
+    "name":"org.eclipse.swt.widgets.Display",
+    "methods":[
+      {"name":"applicationProc","parameterTypes":["long","long"] },
+      {"name":"applicationProc","parameterTypes":["long","long","long"] },
+      {"name":"applicationProc","parameterTypes":["long","long","long","long"] },
+      {"name":"applicationProc","parameterTypes":["long","long","long","long","long","long"] },
+      {"name":"cursorSetProc","parameterTypes":["long","long"] },
+      {"name":"dialogProc","parameterTypes":["long","long","long"] },
+      {"name":"dialogProc","parameterTypes":["long","long","long","long"] },
+      {"name":"dialogProc","parameterTypes":["long","long","long","long","long"] },
+      {"name":"observerProc","parameterTypes":["long","long","long"] },
+      {"name":"windowProc","parameterTypes":["long","long"] },
+      {"name":"windowProc","parameterTypes":["long","long","long"] },
+      {"name":"windowProc","parameterTypes":["long","long","long","long"] },
+      {"name":"windowProc","parameterTypes":["long","long","long","long","long"] },
+      {"name":"windowProc","parameterTypes":["long","long","long","long","long","long"] }
+    ]
+  },
+  {
+    "name":"org.eclipse.swt.widgets.FileDialog",
+    "methods":[
+      {"name":"_completionHandler","parameterTypes":["long"] },
+      {"name":"_overwriteExistingFileCheck","parameterTypes":["long","long","long"] }
+    ]
+  }
+]
