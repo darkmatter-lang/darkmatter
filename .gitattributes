@@ -5,3 +5,4 @@
 *.java linguist-language=Java
 *.lua linguist-language=Lua
 *.json linguist-language=JSON
+*.toml linguist-language=TOML
