@@ -1,4 +1,8 @@
-# Darkmatter
+<p align="center">
+	<img src="./img/logo.png" alt="Darkmatter Logo">
+</p>
+
+<h1 align="center">Darkmatter</h1>
 
 A programming language from another universe.
 
@@ -16,27 +20,27 @@ This is the Darkmatter compiler project, its goal is to output JVM byte-code or 
 <!-- omit in toc -->
 ### Table of Contents
 
-- [Darkmatter](#darkmatter)
-	- [Feature Roadmap](#feature-roadmap)
-		- [Syntax](#syntax)
-		- [Compiler](#compiler)
-		- [Standard Library](#standard-library)
-		- [Package Manager](#package-manager)
-	- [Specification](#specification)
-	- [Compiler Logging](#compiler-logging)
-		- [Logging Levels](#logging-levels)
-		- [Console Logging](#console-logging)
-		- [File Logging](#file-logging)
-	- [FAQ](#faq)
-		- [Why Darkmatter?](#why-darkmatter)
-		- [How are variables defined?](#how-are-variables-defined)
-		- [Why is printing to the console weird?](#why-is-printing-to-the-console-weird)
-		- [Why is the data-type string lower-case and not upper-case like Java?](#why-is-the-data-type-string-lower-case-and-not-upper-case-like-java)
-		- [What are Functions vs Methods?](#what-are-functions-vs-methods)
-	- [Getting Help](#getting-help)
-	- [Reporting Issues](#reporting-issues)
-	- [Contributors](#contributors)
-	- [License](#license)
+- [Feature Roadmap](#feature-roadmap)
+	- [Syntax](#syntax)
+	- [Compiler](#compiler)
+	- [Standard Library](#standard-library)
+	- [Package Manager](#package-manager)
+- [Specification](#specification)
+- [Compiler Logging](#compiler-logging)
+	- [Logging Levels](#logging-levels)
+	- [Console Logging](#console-logging)
+	- [File Logging](#file-logging)
+- [FAQ](#faq)
+	- [Why Darkmatter?](#why-darkmatter)
+	- [What is Darkmatter's color palette?](#what-is-darkmatters-color-palette)
+	- [How are variables defined?](#how-are-variables-defined)
+	- [Why is printing to the console weird?](#why-is-printing-to-the-console-weird)
+	- [Why is the data-type string lower-case and not upper-case like Java?](#why-is-the-data-type-string-lower-case-and-not-upper-case-like-java)
+	- [What are Functions vs Methods?](#what-are-functions-vs-methods)
+- [Getting Help](#getting-help)
+- [Reporting Issues](#reporting-issues)
+- [Contributors](#contributors)
+- [License](#license)
 
 
 ## Feature Roadmap
@@ -193,6 +197,14 @@ Because it sounds cool :)
 > \- [anthonywww](https://github.com/anthonywww)
 
 
+### What is Darkmatter's color palette?
+[What is Darkmatter's color palette?]: #faq-what-is-darkmatters-color-palette?
+
+Darkmatter adopts the color-palette ![cyan](./img/cyan.png) `#00FFFF`, ![dark-cyan](./img/dark-cyan.png) `#045454` and ![black](./img/black.png) `#000000`.
+
+We would appreciate [GitHub Linguist](https://github.com/github-linguist/linguist) classifying Darkmatter as ![cyan](./img/cyan.png) `#00FFFF`.
+
+
 ### How are variables defined?
 [How are variables defined?]: #faq-how-are-variables-defined
 
@@ -241,6 +253,7 @@ If you really prefer `printf()` or `println()` over the methods above, discussio
 Because in Darkmatter a string is a Primitive data-type and not an Object.
 
 It should be noted, Primitives in Darkmatter may have functions attached to them.
+
 
 
 ### What are Functions vs Methods?
