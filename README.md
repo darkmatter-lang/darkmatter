@@ -10,7 +10,7 @@ Darkmatter is a fast & efficient general-purpose programming language simlar to 
 
 This is the Darkmatter compiler project, its goal is to output LLVM-IR assembly which then is assembled into a native platform/architecture-specific binary (executable/library) or output JVM byte-code.
 
-**NOTE: This is a volunteer effort project. This means we work on this project when we have time. Large portions of the project may currently be missing or broken for the time-being until more progress is made!**
+**NOTE: This is a volunteer-effort project. This means we work on this project when we have time. Large portions of the project may currently be missing or broken for the time-being until more progress is made!**
 
 <!-- omit in toc -->
 ### [ [Homepage](https://darkmatter.anthonyw.me) / [RFCs](https://github.com/darkmatter-lang/rfcs) ]
