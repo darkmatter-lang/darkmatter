@@ -8,10 +8,12 @@ A programming language from another universe.
 
 Darkmatter is a fast & efficient general-purpose programming language simlar to Java/C/C#/Rust.
 
-This is the Darkmatter compiler project, its goal is to output JVM byte-code or LLVM-IR assembly which then is assembled into a native platform/architecture-specific binary (executable/library).
+This is the Darkmatter compiler project, its goal is to output LLVM-IR assembly which then is assembled into a native platform/architecture-specific binary (executable/library) or output JVM byte-code.
+
+**NOTE: This is a volunteer effort project. This means we work on this project when we have time. Large portions of the project may currently be missing or broken for the time-being until more progress is made!**
 
 <!-- omit in toc -->
-### [ [Homepage](https://darkmatter.anthonyw.me) / [X Community](https://twitter.com/i/communities/1727990925480079392) / [RFCs](https://github.com/darkmatter-lang/rfcs) ]
+### [ [Homepage](https://darkmatter.anthonyw.me) / [RFCs](https://github.com/darkmatter-lang/rfcs) ]
 
 [![build](https://img.shields.io/github/actions/workflow/status/darkmatter-lang/darkmatter/ci.yml?branch=master)](https://github.com/darkmatter-lang/darkmatter/actions/workflows/ci.yml)
 [![license](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
@@ -21,6 +23,7 @@ This is the Darkmatter compiler project, its goal is to output JVM byte-code or 
 ### Table of Contents
 
 - [Feature Roadmap](#feature-roadmap)
+	- [Compiler Parts](#compiler-parts)
 	- [Syntax](#syntax)
 	- [Compiler](#compiler)
 	- [Standard Library](#standard-library)
@@ -46,6 +49,35 @@ This is the Darkmatter compiler project, its goal is to output JVM byte-code or 
 ## Feature Roadmap
 [Feature Roadmap]: #feature-roadmap
 
+### Compiler Parts
+[Compiler Parts]: #compiler-parts
+
+Darkmatter's compiler will be segmented into 3-parts.
+
+- [ ] Compiler Front-End (lexer, parser, linter, AST)
+  - [ ] Currently under discussion to be written in Rust or Java
+  - [ ] Syntax Definitions & Structure
+  - [ ] Parse compiler flags and arguments
+  - [ ] Input Darkmatter (`.dm`)
+  - [ ] Lexer / Parser / Tokenizer
+  - [ ] AST
+  - [ ] LLVM primitives/library for Java/Rust
+  - [ ] 1:1 AST mappings to LLVM codegen() functions.
+  - [ ] Output LLVM-IR (`.ll`)
+- [ ] Compiler Middleware (analyze and optimize LLVM-IR)
+  - [ ] *TBA*
+  - [ ] Input LLVM-IR (`.ll`)
+  - [ ] Output LLVM-IR (`.ll`)
+- [ ] Compiler Back-End (assemble IR) - Input IR / Output Native Binary or JVM byte-code.
+  - [ ] *TBA*
+  - [ ] Input LLVM-IR (`.ll`)
+  - [ ] Output Native Binary Static Library (`.a`, `.lib`)
+  - [ ] Output Native Binary Dynamic Library (`.so`, `.dll`)
+  - [ ] Output Native Binary Executable (`.exec`, `.exe`)
+  - [ ] Output JVM byte-code (`.class`)
+- [ ] Darkmatter Standard Library
+  - [ ] *TBA*
+
 ### Syntax
 [Syntax]: #syntax
 
@@ -56,10 +88,7 @@ The Darkmatter grammer and syntax requirements.
 - [ ] Scopes / Contexts
 - [ ] Functions (non-class) and Methods (class)
 - [ ] Structs
-- [ ] Reference Operators
-- [ ] Parser
-- [ ] Tokenizer
-- [ ] AST
+- [ ] References ("String Literal" -> &string)
 - [ ] FFI
 
 ### Compiler
@@ -99,6 +128,7 @@ The Standard Library `stdlib` is the standard-API that all Darkmatter programs h
     - [ ] scalar
     - [ ] boolean
     - [ ] char
+    - [ ] reference (&string)
     - [ ] arrays
     - [ ] version (semver)
   - [ ] ffi
