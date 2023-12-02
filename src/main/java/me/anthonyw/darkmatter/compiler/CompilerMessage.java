@@ -1,4 +1,4 @@
-package me.anthonyw.darkmatter.syntax;
+package me.anthonyw.darkmatter.compiler;
 
 public enum CompilerMessage {
 	

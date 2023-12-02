@@ -1,6 +1,11 @@
-package me.anthonyw.darkmatter.syntax;
+package me.anthonyw.darkmatter.compiler;
 
 public enum CompilerSeverity {
+	
+	/**
+	 * Debugging messages.
+	 */
+	DEBUG,
 	
 	/**
 	 * Informational messages.

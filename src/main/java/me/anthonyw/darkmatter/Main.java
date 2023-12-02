@@ -1,5 +1,6 @@
 package me.anthonyw.darkmatter;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.Callable;
 
@@ -10,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
+import picocli.CommandLine.Parameters;
 
 @Command(name = Darkmatter.NAME, mixinStandardHelpOptions = true, version = Darkmatter.VERSION, description = "Darkmatter compiler.")
 public class Main implements Callable<Integer> {
@@ -17,22 +19,20 @@ public class Main implements Callable<Integer> {
 	private static final Logger logger = LoggerFactory.getLogger(Main.class);
 	private int threads = Runtime.getRuntime().availableProcessors();
 
-	@Option(names = { "-i", "--input-file" }, description = "Darkmatter source file.")
-	private String inputFile;
+	@Parameters(index = "0", description = "Darkmatter source file.")
+	private File[] inputFile;
 
 	@Option(names = { "-o", "--output-file" }, description = "Output binary.")
 	private String outputFile;
 
-	@Option(names = { "-t",
-			"--threads" }, defaultValue = "-1", description = "Number of threads to use when processing. (default # of cores)")
+	@Option(names = { "-t", "--threads" }, defaultValue = "-1", description = "Number of threads to use when processing. (default # of cores)")
 	private void setThreads(int threads) {
 		if (threads > 0) {
 			this.threads = threads;
 		}
 	}
 
-	@Option(names = { "-l",
-			"--log-level" }, defaultValue = "INFO", description = "Set the default logger level. (default INFO)")
+	@Option(names = { "-l", "--log-level" }, defaultValue = "INFO", description = "Set the default logger level. (default INFO)")
 	private void setLogLevel(String level) {
 
 		java.util.logging.Level julLevel = java.util.logging.Level.INFO;
@@ -68,6 +68,18 @@ public class Main implements Callable<Integer> {
 	public Integer call() throws Exception {
 
 		logger.info("{} v{}", Darkmatter.NAME, Darkmatter.VERSION);
+		
+		
+		// TODO: check compiler flags
+		
+		// TODO: initialize darkmatter
+		
+		// TODO: scan input files
+		
+		// TODO: parse input into AST
+		
+		// TODO: compile to LLVM-IR
+		
 
 		return 0;
 	}
