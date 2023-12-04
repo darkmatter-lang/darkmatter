@@ -62,7 +62,6 @@ public enum LlvmOpCode {
 	USER_OP2(0x30, "userop2"),                   // 48
 	AARG(0x31, "aarg"),                          // 49
 	EXTRACT_ELEMENT(0x32, "extractelement"),     // 50
-	
 	INSERT_ELEMENT(0x33, "insertelement"),       // 51
 	SHUFFLE_VECTOR(0x34, "shufflevector"),       // 52
 	EXTRACT_VALUE(0x35, "extractvalue"),         // 53
