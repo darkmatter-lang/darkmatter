@@ -90,7 +90,9 @@ The Darkmatter grammer and syntax requirements.
 [Compiler]: #compiler
 
 ```mermaid
-graph LR
+flowchart LR
+
+
 
 %% Back End
 
