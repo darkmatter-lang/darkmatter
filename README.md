@@ -90,75 +90,76 @@ The Darkmatter grammer and syntax requirements.
 [Compiler]: #compiler
 
 ```mermaid
-flowchart LR
+flowchart LR;
 
 
-
-%% Back End
+%% Back End %%;
 
 H(LLVM-IR):::blue --> |*.ll| I("
 	Optimization
-")
+");
 
-subgraph Darkmatter Back-end
+subgraph Darkmatter Back-end;
 I --> J("
 	LLVM-AS
 	linker/assembler
-")
-end
+");
+end;
 
-J--> |"*.{a,so,lib,dll,dylib}"| K["`
-	**Library**
+J--> |"*.{a,so,lib,dll,dylib}"| K["
+	- Library -
 	ELF,PE,MACH-O
 	amd64,i386,arm64,armhf,mips
-`"]:::green
-J--> |"*.{,exe,exec}"| L["`
-	**Executable**
+"]:::green;
+J--> |"*.{,exe,exec}"| L["
+	- Executable -
 	ELF,PE,MACH-O
 	amd64,i386,arm64,armhf,mips
-`"]:::red
+"]:::red;
 
 
 
 
-%% Front End
+
+%% Front End %%;
 
 A(Source Code):::cyan --> |*.dm| B("
 	Tokenizer
 	lexical analysis
-"):::yellow
+"):::yellow;
 
-subgraph Darkmatter Front-end
+subgraph Darkmatter Front-end;
 	B --> |Tokens| C("
 		Parser
 		syntactic analysis
-	")
+	");
 	C --> D("
 		AST
-	")
+	");
 	D --> E("
 		Generator
-	")
-end
+	");
+end;
 
 E --> G("
 	LLVM-IR
-"):::blue
+"):::blue;
 E --> F["
 	JVM byte-code
-"]:::orange
+"]:::orange;
 
 
 
 
-%% Styling
 
-classDef red stroke:#FF0000
-classDef green stroke:#00FF00
-classDef blue stroke:#0000FF
-classDef yellow stroke:#FFFF00
-classDef orange stroke:#FFAA00
-classDef cyan stroke:#00FFFF
+%% Styling %%;
+
+classDef red stroke:#FF0000;
+classDef green stroke:#00FF00;
+classDef blue stroke:#0000FF;
+classDef yellow stroke:#FFFF00;
+classDef orange stroke:#FFAA00;
+classDef cyan stroke:#00FFFF;
 ```
 
 <!-- omit in toc -->
