@@ -208,18 +208,18 @@ public enum JvmOpCode {
 	IMPDEP2(0xFF, "impdep2");
 
 	private final int opcode;
-	private final String name;
+	private final String mnemonic;
 
-	JvmOpCode(int opcode, String name) {
+	private JvmOpCode(int opcode, String mnemonic) {
 		this.opcode = opcode;
-		this.name = name;
+		this.mnemonic = mnemonic;
 	}
 
-	public int getOpcode() {
+	public int getOpCode() {
 		return opcode;
 	}
 
-	public String getName() {
-		return name;
+	public String getMnemonic() {
+		return mnemonic;
 	}
 }

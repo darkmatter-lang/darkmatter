@@ -164,5 +164,4 @@ Thumbs.db
 output/
 *.bin
 *.o
-*.ll
 /bin/

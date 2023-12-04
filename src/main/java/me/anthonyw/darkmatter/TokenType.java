@@ -16,7 +16,7 @@ public enum TokenType {
 	
 	PERCENT("%"),
 	
-	CIRCUMFLEX_ACCENT("^"),
+	CIRCUMFLEX("^"),
 	
 	AMPERSAND("&"),
 	
@@ -83,13 +83,22 @@ public enum TokenType {
 	
 	LITERAL_INTEGER,
 	
+	LITERAL_FLOAT,
+	
+	LITERAL_DOUBLE,
+	
+	LITERAL_LONG,
+	
 	LITERAL_CHARACTER,
 	
 	LITERAL_STRING,
 	
 	LITERAL_BOOLEAN,
 	
-	LET("let"),
+	/**
+	 * A compile-time assigned data-type variable (constant/immutable).
+	 */
+	VAR("var"),
 	
 	FUNCTION("function"),
 	
@@ -124,13 +133,26 @@ public enum TokenType {
 	
 	// Module/Container types
 	
+	// Structs
+	
 	STRUCT("struct"),
 	
+	IMPLEMENTATION("implementation"),
+	
+	// Classes (OOP)
+	
 	CLASS("class"),
+	
+	/**
+	 * Like Java 'extends'
+	 */
+	INHERITS("inherits"),
 	
 	ENUM("enum"),
 	
 	INTERFACE("interface"),
+	
+	ABSTRACT("abstract"),
 	
 	STATEMENT,
 	

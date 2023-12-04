@@ -4,7 +4,7 @@ import java.util.logging.ErrorManager;
 import java.util.logging.Handler;
 import java.util.logging.Level;
 
-import me.anthonyw.darkmatter.cli.ConsoleColors;
+import me.anthonyw.darkmatter.cli.AnsiColor;
 
 public class ConsoleHandler extends Handler {
 	
@@ -23,11 +23,11 @@ public class ConsoleHandler extends Handler {
 		try {
 			final String message = getFormatter().format(record);
 			if (record.getLevel().intValue() == Level.WARNING.intValue()) {
-				System.err.printf("%s%s%s%n", ConsoleColors.YELLOW_BRIGHT, message.toString(), ConsoleColors.RESET);
+				System.err.printf("%s%s%s%n", AnsiColor.YELLOW_BRIGHT, message.toString(), AnsiColor.RESET);
 			} else if (record.getLevel().intValue() > Level.WARNING.intValue()) {
-				System.err.printf("%s%s%s%n", ConsoleColors.RED_BRIGHT, message.toString(), ConsoleColors.RESET);
+				System.err.printf("%s%s%s%n", AnsiColor.RED_BRIGHT, message.toString(), AnsiColor.RESET);
 			} else {
-				System.out.printf("%s%s%n", message.toString(), ConsoleColors.RESET);
+				System.out.printf("%s%s%n", message.toString(), AnsiColor.RESET);
 			}
 		} catch (Exception exception) {
 			reportError(null, exception, ErrorManager.FORMAT_FAILURE);

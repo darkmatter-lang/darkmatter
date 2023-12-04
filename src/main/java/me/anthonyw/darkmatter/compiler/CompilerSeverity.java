@@ -1,25 +1,32 @@
 package me.anthonyw.darkmatter.compiler;
 
+import me.anthonyw.darkmatter.cli.AnsiColor;
+
 public enum CompilerSeverity {
 	
 	/**
-	 * Debugging messages.
+	 * Helpful suggestions.
 	 */
-	DEBUG,
-	
-	/**
-	 * Informational messages.
-	 */
-	INFO,
+	NOTE(AnsiColor.CYAN_BRIGHT),
 	
 	/**
 	 * Warning messages, including basic optimization checks.
 	 */
-	WARN,
+	WARN(AnsiColor.YELLOW_BRIGHT),
 	
 	/**
 	 * Error messages, requires review, compilation halted.
 	 */
-	ERROR;
+	ERROR(AnsiColor.RED_BRIGHT);
+	
+	private final String cliColor;
+	
+	private CompilerSeverity(final String redBright) {
+		this.cliColor = redBright;
+	}
+	
+	public String getAnsiColor() {
+		return cliColor;
+	}
 	
 }

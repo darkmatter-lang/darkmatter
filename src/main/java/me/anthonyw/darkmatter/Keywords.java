@@ -107,7 +107,9 @@ public enum Keywords {
 	
 	
 	
-	
+	/**
+	 * A compile-time assigned data-type variable (constant/immutable).
+	 */
 	VAR(KeywordType.DATA_TYPE);
 	
 	private final KeywordType type;
