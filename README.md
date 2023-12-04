@@ -52,31 +52,26 @@ This is the Darkmatter compiler project, its goal is to output LLVM-IR assembly 
 ### Compiler Parts
 [Compiler Parts]: #compiler-parts
 
-Darkmatter's compiler will be segmented into 3-parts.
+Darkmatter's compiler is segmented into 2-parts.
 
-- [ ] Compiler Front-End (lexer, parser, linter, AST)
+- Front-End (lexer, parser, linter, AST)
   - [ ] Currently under discussion to be written in Rust or Java
   - [ ] Syntax Definitions & Structure
   - [ ] Parse compiler flags and arguments
   - [ ] Input Darkmatter (`.dm`)
   - [ ] Lexer / Parser / Tokenizer
   - [ ] AST
-  - [ ] LLVM primitives/library for Java/Rust
-  - [ ] 1:1 AST mappings to LLVM codegen() functions.
+  - [ ] LLVM codegen() for AST
+  - [ ] Optimize produced LLVM-IR (depending on optimization-level)
   - [ ] Output LLVM-IR (`.ll`)
-- [ ] Compiler Middleware (analyze and optimize LLVM-IR)
+- Back-End (assemble IR) - Input IR / Output Native Binary or JVM byte-code
   - [ ] *TBA*
   - [ ] Input LLVM-IR (`.ll`)
-  - [ ] Output LLVM-IR (`.ll`)
-- [ ] Compiler Back-End (assemble IR) - Input IR / Output Native Binary or JVM byte-code.
-  - [ ] *TBA*
-  - [ ] Input LLVM-IR (`.ll`)
+  - [ ] Linker - https://lld.llvm.org/
   - [ ] Output Native Binary Static Library (`.a`, `.lib`)
   - [ ] Output Native Binary Dynamic Library (`.so`, `.dll`)
   - [ ] Output Native Binary Executable (`.exec`, `.exe`)
   - [ ] Output JVM byte-code (`.class`)
-- [ ] Darkmatter Standard Library
-  - [ ] *TBA*
 
 ### Syntax
 [Syntax]: #syntax
@@ -94,10 +89,82 @@ The Darkmatter grammer and syntax requirements.
 ### Compiler
 [Compiler]: #compiler
 
+```mermaid
+flowchart LR
+
+
+
+%% Back End
+
+H(LLVM-IR):::blue --> |*.ll| I("
+	Optimization
+")
+
+subgraph Darkmatter Back-end
+I --> J("
+	LLVM-AS
+	linker/assembler
+")
+end
+
+J--> |"*.{a,so,lib,dll,dylib}"| K["`
+	**Library**
+	ELF,PE,MACH-O
+	amd64,i386,arm64,armhf,mips
+`"]:::green
+J--> |"*.{,exe,exec}"| L["`
+	**Executable**
+	ELF,PE,MACH-O
+	amd64,i386,arm64,armhf,mips
+`"]:::red
+
+
+
+
+%% Front End
+
+A(Source Code):::cyan --> |*.dm| B("
+	Tokenizer
+	lexical analysis
+"):::yellow
+
+subgraph Darkmatter Front-end
+	B --> |Tokens| C("
+		Parser
+		syntactic analysis
+	")
+	C --> D("
+		AST
+	")
+	D --> E("
+		Generator
+	")
+end
+
+E --> G("
+	LLVM-IR
+"):::blue
+E --> F["
+	JVM byte-code
+"]:::orange
+
+
+
+
+%% Styling
+
+classDef red stroke:#FF0000
+classDef green stroke:#00FF00
+classDef blue stroke:#0000FF
+classDef yellow stroke:#FFFF00
+classDef orange stroke:#FFAA00
+classDef cyan stroke:#00FFFF
+```
+
 <!-- omit in toc -->
 ##### Currently considering RAII (Resource Acquisition Is Initialization/Scope-Bound Resource Management) for memory management.
 
-- [ ] Output JVM byte-code
+
 - [ ] Output LLVM-IR assembly
   - [ ] Compile LLVM-IR to platform/architecture binary (supported ABI/ISAs):
     - [ ] Linux/amd64     (Intel/AMD 64-bit)
@@ -108,12 +175,44 @@ The Darkmatter grammer and syntax requirements.
     - [ ] MacOS/aarch64   (RISC ARMv8 64-bit)
     - [ ] Windows/x86     (Intel/AMD 32-bit)
     - [ ] Windows/amd64   (RISC ARMv8 64-bit)
-- [ ] Compiler flags/options/args
-  - [ ] Compiler can handle a variable # of src files (`ARGS`)
-  - [ ] Set output file (`-o`)
-  - [ ] Set threads (`-t`)
-  - [ ] Set log-level (`-l`)
-  - [ ] REPL/Interpreter mode (`-I`)
+- [ ] Output JVM byte-code
+- [ ] `dmc` - Compiler flags/options/args (`ARGS*` are the input Darkmatter source-files to compile)
+  - `-l`, `--log-level` - Specify the logger level (`TRACE`, `DEBUG`, `INFO`, `WARN`, `ERROR`) (Default: `INFO`)
+  - `-j`, `--threads` - Specify threads for compilation/transpilation
+  - [ ] `compile` - Compile Darkmatter directly to a native binary (library/executable)
+    - `-o`, `--output` - Output destination of the library/executable
+    - `-t`, `--target` - Specify the target platform/architecture
+    - `-k`, `--library` - Specify the library type (`static`/`dynamic`) (Default: `static`)
+    - `-A`, `--emit` - Only emit LLVM-IR assembly, do not assemble.
+    - `-O`, `--optimize` - Optimization level (`0`=no optimization, `2`=aggressive optimization) (Default: `0`)
+  - [ ] `generate` - Compile Darkmatter to JVM byte-code
+    - `-o`, `--output` - Output file destination
+    - `-b`, `--byte-code` - The byte-code language to produce (`jvm`) (Default: `jvm`)
+
+Examples:
+```sh
+## AoT Examples
+
+# Compile `count_to_ten.dm` to a native executable binary named `count`
+dmc compile --output count count_to_ten.dm
+dmc compile -o count count_to_ten.dm
+
+# Compile `count_to_ten.dm` to a native `linux/amd64` executable binary (ELF)
+dmc compile --output count --target linux/amd64 count_to_ten.dm
+dmc compile -o count -t linux/amd64 count_to_ten.dm
+
+
+## JIT Examples
+
+# Compile `my_class.dm` to a JVM byte-code class file
+dmc generate --output MyClass.class --byte-code jvm my_class.dm
+dmc generate -o MyClass.class my_class.dm
+
+# Compile `a.dm` and `b.dm` to a JVM byte-code jar file
+dmc generate --output MyApp.jar --byte-code jvm a.dm b.dm
+dmc generate -o MyApp.jar a.dm b.dm
+```
+
 
 ### Standard Library
 [Standard Library]: #standard-library

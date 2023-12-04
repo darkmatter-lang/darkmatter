@@ -1,6 +1,4 @@
-package me.anthonyw.darkmatter.compiler;
-
-import me.anthonyw.darkmatter.compiler.llvm.LlvmOpCode;
+package me.anthonyw.darkmatter.compiler.llvm;
 
 public class LlvmAssembly {
 	
